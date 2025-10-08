@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Black Coffee",
+      "description": "Expresso Black Coffee, dark roasted, streng 4/5  ",
+      "price": "R$85,00 Kg",
+      "cover": "https://i.ibb.co/DDwH6D6M/Black-Coffee.png"
+    },
+    {
+      "id": 2,
+      "title": "Arabica Coffee",
+      "description": "Purissimi Caffe Arabica",
+      "price": "R$82,00Kg",
+      "cover": "https://i.ibb.co/tPL4pTc5/arabica-coffee.png"
+    },
+    {
+      "id": 3,
+      "title": "Cappuccino",
+      "description": "Nescafé Cappuccino 100% Arabica Coffe",
+      "price": "R$21,99 180gr.",
+      "cover": "https://i.ibb.co/xSTx7WyR/Cappuccino-coffee.png"
+    },
+    {
+      "id": 4,
+      "title": "Nescafé Gold Blend",
+      "description": "Balanced body, full-bodied coffee with caramel notes",
+      "price": "R$39,90 250gr.",
+      "cover": "https://i.ibb.co/DDgKcwQX/Espresso-coffee.png"
+    },
+    {
+      "id": 5,
+      "title": "Decaf Coffee",
+      "description": "Decaf Espresso Roasted Blend",
+      "price": "R$90,00Kg",
+      "cover": "https://i.ibb.co/93rSNmWW/Decaf-caffee.png"
+    },
+    {
+      "id": 6,
+      "title": "Coffe of Vietnam",
+      "description": "Whole Beans Dark Roast",
+      "price": "R$110,00Kg",
+      "cover": "https://i.ibb.co/93rSNmWW/Decaf-caffee.png"
+    }
+  ]
+}
