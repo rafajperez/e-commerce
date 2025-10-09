@@ -6,7 +6,7 @@ const Header = () => {
     <header className="w-full px-1 bg-stone-800">
       <nav className="w-full pl-0  h-14 flex items-center justify-between px-5 ml-2 ">
         <Link
-          className="font-bold bg-white w-28  text-3x1 pl-2.5 text-stone-800 rounded-sm"
+          className=" font-script font-bold bg-white w-28  text-2xl pl-1.5 text-stone-800 rounded-sm"
           to="/"
         >
           Coffee Shop

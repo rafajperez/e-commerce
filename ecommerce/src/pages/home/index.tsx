@@ -39,14 +39,14 @@ const Home = () => {
               <p className=" pl-2  font-medium bg-stone-800 text-white  mt-1 mb-2">
                 {product.title}{" "}
               </p>
-              <div>
+              <div className="flex items-center justify-between">
                 <strong className="text-stone-800">
                   {product.price.toLocaleString("pt-BR", {
                     style: "currency",
                     currency: "BRL",
                   })}
                 </strong>
-                <button className="bg-stone-800 ml-1 p-1 rounded">
+                <button className="bg-stone-800 ml-1 p-1 rounded hover:bg-stone-700 transition ">
                   <BsCartPlus size={20} color="#FFF" />
                 </button>
               </div>
