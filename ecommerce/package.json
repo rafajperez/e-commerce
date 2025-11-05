@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.9.2",
     "@tailwindcss/vite": "^4.1.13",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.12.2",

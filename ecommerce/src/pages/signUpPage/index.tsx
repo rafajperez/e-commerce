@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { translateFirebaseError } from "../../utils";
 
 const SignupPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -24,11 +25,9 @@ const SignupPage: React.FC = () => {
       const firebaseError = err as { code?: string; message?: string };
       let errorMessage = "Ocorreu um erro desconhecido ao tentar registrar";
       if (firebaseError.code) {
-        errorMessage = `Erro ao registrar:${firebaseError.code
-          ?.split("/")[1]
-          .replace(/-/g, "")}`;
-        setError(errorMessage);
+        errorMessage = translateFirebaseError(firebaseError.code);
       }
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -43,7 +42,7 @@ const SignupPage: React.FC = () => {
         borderRadius: "8px",
       }}
     >
-      <h2>Cadastro na Coffee Shop</h2>
+      <h2 className="font-bold text-center ">Cadastre-se na Coffee Shop!</h2>
 
       {/* Exibe o erro se houver */}
       {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
@@ -61,7 +60,7 @@ const SignupPage: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Email:</label>
+          <label htmlFor="password">Senha</label>
           <input
             id="password"
             type="password"
@@ -79,7 +78,7 @@ const SignupPage: React.FC = () => {
             width: "100%",
             padding: "10px",
             marginTop: "20px",
-            backgroundColor: "#6F4E37",
+            backgroundColor: "#22150d",
             color: "white",
             border: "none",
             borderRadius: "4px",
