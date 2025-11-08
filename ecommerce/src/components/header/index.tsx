@@ -16,15 +16,21 @@ const Header = () => {
   return (
     <header className="w-full px-1 bg-stone-800">
       <nav className="w-full h-14 flex items-center justify-between px-5 ml-2">
-        <Link
-          className={logoClasses}
-          to="/"
-          onClick={(e) => isHomePage && e.preventDefault()}
-        >
-          Coffee Shop
-        </Link>
-
-        {/* Lado Direito: Status do Usuário e Carrinho */}
+        <div className="flex items-center space-x-6">
+          <Link
+            className={logoClasses}
+            to="/"
+            onClick={(e) => isHomePage && e.preventDefault()}
+          >
+            Coffee Shop
+          </Link>
+          <Link
+            to="/products"
+            className="text-white font-semibold hover:text-gray-300 transition-colors"
+          >
+            Produtos
+          </Link>
+        </div>
         <div className="flex items-center space-x-4">
           <UserStatus />
 

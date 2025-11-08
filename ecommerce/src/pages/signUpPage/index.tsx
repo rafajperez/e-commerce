@@ -18,7 +18,7 @@ const SignupPage: React.FC = () => {
 
     try {
       await signup(email, password);
-      navigate("/produtos");
+      navigate("/products");
     } catch (err) {
       console.error(err);
 

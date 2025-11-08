@@ -1,7 +1,3 @@
-//Este arquivo contém toda a lógica de estado (useState) e o observador de autenticação (useEffect).
-
-// src/context/AuthProvider.tsx (Antigo AuthContext.tsx, renomeado para clareza)
-
 import React, { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -12,10 +8,9 @@ import {
 } from "firebase/auth";
 import type { User as FirebaseUser } from "firebase/auth";
 
-// Importa o Contexto e os Tipos do arquivo separado
 import { AuthContext } from "./AuthTypes";
 import type { AuthContextType } from "./AuthTypes";
-import { auth } from "../config/firebase"; // Verifique o caminho se houver erro 2307
+import { auth } from "../config/firebase";
 
 interface AuthProviderProps {
   children: ReactNode;

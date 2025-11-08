@@ -1,59 +1,35 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { BsCartPlus } from "react-icons/bs";
+import React from "react";
+import { Link } from "react-router-dom";
 
-interface ProductsProps {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  cover: string;
-}
-
-const Home = () => {
-  const [products, setProducts] = useState<ProductsProps[]>([]);
-
-  useEffect(() => {
-    async function getProducts() {
-      const response = await api.get("/products");
-      setProducts(response.data);
-    }
-    getProducts();
-  }, []);
-
+const Home: React.FC = () => {
   return (
-    <div>
-      <main className="w-full max-w-7x1 px-4 mx-auto pb-20">
-        <h1 className="italic font-bold text-2xl mb-4 mt-10 text-center text-stone-800">
-          Produtos mais vendidos
-        </h1>
+    <div
+      className="relative h-[80vh] flex items-center justify-center text-center"
+      style={{
+        backgroundImage: "url(src/assets/cupcoffee.jpeg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0 bg-black opacity-40"></div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <section key={product.id} className="w-full">
-              <img
-                className="w-full rounded-lg max-h-70 mb-2"
-                src={product.cover}
-                alt={product.title}
-              />
-              <p className=" pl-2  font-medium bg-stone-800 text-white  mt-1 mb-2">
-                {product.title}{" "}
-              </p>
-              <div className="flex items-center justify-between">
-                <strong className="text-stone-800">
-                  {product.price.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
-                </strong>
-                <button className="bg-stone-800 ml-1 p-1 rounded hover:bg-stone-700 transition ">
-                  <BsCartPlus size={20} color="#FFF" />
-                </button>
-              </div>
-            </section>
-          ))}
-        </div>
-      </main>
+      <div className="relative z-10 p-8 max-w-2xl bg-white/10 backdrop-blur-sm rounded-xl">
+        <h1 className="text-5xl font-extrabold text-white mb-4 drop-shadow-lg">
+          Desperte Seus Sentidos
+        </h1>
+        <p className="text-xl text-gray-200 mb-8 font-light">
+          Somos apaixonados por grãos de alta qualidade, torrados à perfeição
+          para entregar a você a experiência mais rica em cada xícara. Descubra
+          o sabor autêntico do nosso café especial.
+        </p>
+
+        <Link
+          to="/products"
+          className="bg-yellow-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-700 transition-colors shadow-lg"
+        >
+          Explorar Nossos Cafés
+        </Link>
+      </div>
     </div>
   );
 };
