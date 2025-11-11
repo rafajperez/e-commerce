@@ -1,12 +1,10 @@
-// src/pages/cart/cart.tsx
-
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../hooks/useCart"; // Importe nosso hook
-import { FiTrash2 } from "react-icons/fi"; // Ícone de Lixeira para remoção
+import { useCart } from "../../hooks/useCart";
+import { FiTrash2 } from "react-icons/fi";
 
 const Cart = () => {
   const navigate = useNavigate();
-  // ✅ Pega os itens, funções de gestão e o total do carrinho
+
   const {
     items,
     incrementQuantity,
@@ -27,7 +25,7 @@ const Cart = () => {
         <div className="text-center my-10 text-stone-600">
           <p className="text-xl">Seu carrinho está vazio. ☕</p>
           <button
-            onClick={() => navigate("/produtos")}
+            onClick={() => navigate("/products")}
             className="mt-4 bg-stone-500 text-white py-2 px-4 rounded-md hover:bg-stone-600 transition-colors"
           >
             Ver Produtos
@@ -40,22 +38,23 @@ const Cart = () => {
           key={item.id}
           className="flex items-center justify-between border-b-2 border-stone-400 py-3 mb-4"
         >
-          {/* Imagem e Nome */}
           <div className="flex items-center gap-4">
             <img
-              src={item.urlImagem || "placeholder.jpg"}
-              alt={item.nome}
+              src={item.cover || "placeholder.jpg"}
+              alt={item.title}
               className="w-20 h-20 object-cover rounded-md"
             />
-            <strong className="text-stone-800">{item.nome}</strong>
+            <strong className="text-stone-800">{item.title}</strong>
           </div>
 
-          {/* Preço Unitário */}
-          <strong className="text-stone-800">
-            R$ {item.preco.toFixed(2).replace(".", ",")}
-          </strong>
+          <div className="flex items-end gap-1 flex-shrink-0 w-[150px] justify-end">
+            <strong className="text-stone-800 text-base font-semibold">
+              R$ {item.price?.toFixed(2).replace(".", ",")}
+            </strong>
 
-          {/* Quantidade */}
+            <span className="text-stone-500 text-xs mb-[1px]">{item.unit}</span>
+          </div>
+
           <div className="flex items-center justify-center gap-3">
             <button
               onClick={() => decrementQuantity(item.id)}
@@ -72,11 +71,10 @@ const Cart = () => {
             </button>
           </div>
 
-          {/* Subtotal e Remover */}
           <div className="flex items-center gap-4">
             <strong className="text-stone-800">
               Subtotal: R${" "}
-              {(item.preco * item.quantity).toFixed(2).replace(".", ",")}
+              {(item.price * item.quantity).toFixed(2).replace(".", ",")}
             </strong>
             <button
               onClick={() => removeItem(item.id)}
@@ -88,7 +86,6 @@ const Cart = () => {
         </section>
       ))}
 
-      {/* Rodapé e Checkout */}
       {items.length > 0 && (
         <>
           <p className="font-bold mt-6 text-stone-800 text-right text-xl">

@@ -4,10 +4,12 @@ import { db } from "../config/firebase";
 
 export interface Product {
   id: string;
-  nome: string;
-  preco: number;
-  urlImagem: string;
-  descricao: string;
+  title: string;
+  subtitle: string;
+  price: number;
+  cover: string;
+  description: string;
+  unit: string;
 }
 
 export const useFetchProducts = () => {

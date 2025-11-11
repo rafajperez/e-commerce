@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import type { Product } from "../hooks/useFetchProducts";
 import type { CartItem, CartContextType } from "./CartTypes";
 import { CartContext } from "./CartTypes";
-
 interface CartProviderProps {
   children: ReactNode;
 }
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    const localData = localStorage.getItem("@CoffeeShop:cart");
+    return localData ? JSON.parse(localData) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("@CoffeeShop:cart", JSON.stringify(items));
+  }, [items]);
 
   const addItem = (product: Product) => {
     setItems((currentItems) => {
@@ -45,7 +50,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setItems((currentItems) => currentItems.filter((item) => item.id !== id));
   };
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + item.preco * item.quantity, 0);
+    return items.reduce((total, item) => total + item.price * item.quantity, 0);
   };
   const value: CartContextType = {
     items,

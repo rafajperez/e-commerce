@@ -7,6 +7,7 @@ import SignupPage from "./pages/signUpPage";
 import { ProtectedRoute } from "./components/protetctedRoute";
 import CheckoutPage from "./components/checkout";
 import Products from "./pages/products";
+import ProductDetailPage from "./pages/productDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
     element: <ProtectedRoute element={<CheckoutPage />} />,
+  },
+  {
+    path: "/produtos/:id",
+    element: <ProductDetailPage />,
   },
 ]);
 
