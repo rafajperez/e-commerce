@@ -22,6 +22,10 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
+        path: "/produtos/:id",
+        element: <ProductDetailPage />,
+      },
+      {
         path: "/cart",
         element: <Cart />,
       },
@@ -38,10 +42,6 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
     element: <ProtectedRoute element={<CheckoutPage />} />,
-  },
-  {
-    path: "/produtos/:id",
-    element: <ProductDetailPage />,
   },
 ]);
 

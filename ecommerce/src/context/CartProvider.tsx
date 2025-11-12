@@ -52,6 +52,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const getTotalPrice = () => {
     return items.reduce((total, item) => total + item.price * item.quantity, 0);
   };
+  const clearCart = () => {
+    setItems([]);
+  };
   const value: CartContextType = {
     items,
     addItem,
@@ -59,6 +62,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     getTotalPrice,
     incrementQuantity,
     decrementQuantity,
+    clearCart,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

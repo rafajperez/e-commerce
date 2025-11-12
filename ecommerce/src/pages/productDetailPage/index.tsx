@@ -10,6 +10,7 @@ const ProductDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const { addItem } = useCart();
 
+  const [showNotification, setShowNotification] = useState(false);
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -36,7 +37,15 @@ const ProductDetailPage: React.FC = () => {
     };
     fetchProduct();
   }, [id]);
-
+  const handleAddToCart = () => {
+    if (product) {
+      addItem(product);
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 3000);
+    }
+  };
   if (loading) {
     return (
       <p className="text-center mt-20 text-stone-700">
@@ -53,7 +62,7 @@ const ProductDetailPage: React.FC = () => {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-8 mt-10 bg-white rounded-xl shadow-2xl">
+    <div className="w-full max-w-6xl mx-auto p-8 mt-20 bg-white rounded-xl shadow-2xl">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/2">
           <img
@@ -82,8 +91,9 @@ const ProductDetailPage: React.FC = () => {
               {product.unit}
             </span>
           </div>
+
           <button
-            onClick={() => addItem(product)}
+            onClick={handleAddToCart}
             className="w-full py-3 bg-stone-800 text-white font-bold rounded-xl hover:bg-stone-700 transition-colors shadow-md flex items-center justify-center text-lg"
           >
             Adicionar ao Carrinho
@@ -97,6 +107,19 @@ const ProductDetailPage: React.FC = () => {
           </button>
         </div>
       </div>
+      {showNotification && product && (
+        <div className="fixed bottom-10 right-10 bg-green-700 text-white py-3 px-6 rounded-lg shadow-2xl z-50 transition-all duration-300">
+          <p className="font-semibold text-lg flex items-center gap-2">
+            <span>✅</span> "{product.title}" adicionado!
+          </p>
+          <button
+            onClick={() => navigate("/cart")}
+            className="text-yellow-300 text-sm mt-1 hover:text-yellow-100 underline"
+          >
+            Ver Carrinho
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,12 +1,9 @@
 import React from "react";
-import { BsCartPlus } from "react-icons/bs";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
-import { useCart } from "../../hooks/useCart";
 import { Link } from "react-router-dom";
 
 const Products: React.FC = () => {
   const { products, loading, error } = useFetchProducts();
-  const { addItem } = useCart();
 
   if (loading) {
     return (
@@ -76,14 +73,10 @@ const Products: React.FC = () => {
                   {product.unit}
                 </span>
               </div>
-              <button
-                onClick={() => addItem(product)}
-                className="flex items-center bg-stone-800 text-white text-sm font-semibold py-2 px-4 rounded-full hover:bg-stone-700 transition-colors shadow-md"
-              >
-                <BsCartPlus size={18} color="#FFF" className="mr-2" />
-                Adicionar
-              </button>
             </div>
+            <p className="text-green-600 text-xs font-bold ml-4 mb-2 mt-1">
+              FRETE GRÁTIS
+            </p>
           </section>
         ))}
       </div>

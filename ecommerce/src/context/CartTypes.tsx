@@ -12,6 +12,7 @@ export interface CartContextType {
   getTotalPrice: () => number;
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(

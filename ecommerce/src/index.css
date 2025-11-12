@@ -4,3 +4,10 @@
 @theme {
   --font-script: Great Vibes, cursive;
 }
+
+body {
+  overflow-x: hidden;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #57534e; /* Tom ligeiramente mais escuro ao passar o mouse */
+}
