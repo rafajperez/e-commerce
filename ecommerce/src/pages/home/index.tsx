@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cupcoffee from "../../assets/cupcoffee.jpeg";
 const Home: React.FC = () => {
   return (
     <div
       className="relative h-[80vh] flex items-center justify-center text-center"
       style={{
-        backgroundImage: `url(${cupcoffee})`,
+        backgroundImage: `url("/cupcoffee.jpeg")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
