@@ -24,7 +24,7 @@ const SignupPage: React.FC = () => {
     try {
       await signup(email, password);
 
-      navigate("/produtos");
+      navigate("/products");
     } catch (err) {
       console.error(err);
 
@@ -112,7 +112,6 @@ const SignupPage: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            // ✅ Botão no tom de café (stone-700/800)
             className={`${buttonBaseClasses} bg-stone-700 text-white hover:bg-stone-800`}
           >
             {loading ? "Registrando..." : "Criar Conta"}

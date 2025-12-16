@@ -28,7 +28,7 @@ const Header = () => {
             to="/products"
             className="text-white font-semibold hover:text-gray-300 transition-colors"
           >
-            Produtos
+            Nossos cafés
           </Link>
         </div>
         <div className="flex items-center space-x-4">
