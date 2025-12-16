@@ -6,6 +6,7 @@ import { translateFirebaseError } from "../../utils";
 const SignupPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { signup } = useAuth();
@@ -14,6 +15,10 @@ const SignupPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    if (password !== confirmPassword) {
+      setError("As senhas digitadas não são iguais. Por favor verifique!");
+      return;
+    }
     setLoading(true);
 
     try {
@@ -81,6 +86,23 @@ const SignupPage: React.FC = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
+              disabled={loading}
+              className={inputClasses}
+            />
+          </div>
+          <div className="text-left mb-6">
+            <label
+              htmlFor="confirm-password"
+              className="text-stone-700 font-medium block mb-1"
+            >
+              Confirmar Senha:
+            </label>
+            <input
+              id="confirm-password"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
               disabled={loading}
               className={inputClasses}

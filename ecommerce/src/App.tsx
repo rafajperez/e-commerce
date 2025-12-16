@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import SignupPage from "./pages/signUpPage";
 import { ProtectedRoute } from "./components/protetctedRoute";
 import CheckoutPage from "./components/checkout";
-import Products from "./pages/products";
+import Products from "./pages/products/index";
 import ProductDetailPage from "./pages/productDetailPage";
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
+        path: "/produtos",
         element: <Products />,
       },
       {
